@@ -5,6 +5,7 @@
 	import Camera from '$lib/Main/Camera.svelte';
 	import Configure from '$lib/Main/Configure.svelte';
 	import Empty from '$lib/Main/Empty.svelte';
+	import Bar from '$lib/Sidebar/Bar.svelte'
 
 	export let item: any;
 	export let sectionName: string | undefined = undefined;
@@ -21,7 +22,9 @@
 {:else if item?.type === 'conditional_media'}
 	<ConditionalMedia sel={item} />
 {:else if item?.type === 'camera'}
-	<Camera sel={item} responsive={false} muted={true} controls={false} />
+	<Camera sel={item} responsive={true} muted={true} controls={true} />
+{:else if item?.type === 'bar'}
+	<Bar entity_id={item?.entity_id} id={item?.id} name={item?.name} math={item?.math} />
 {:else if item?.type === 'empty'}
 	<Empty sel={item} />
 {:else}
